@@ -4,13 +4,16 @@ var sys = require('util'),
 	fs = require('fs.extra'),
 	path = require('path'),
 	basePath = '.',
-	File = require('../lib/file')(),
+	File = require('../lib/file')({source:basePath}),
 	dust = require('dustjs-linkedin'),
 	modulePath = path.resolve(module.filename, '../../src'),
 	templatesPath = path.resolve(modulePath, 'apps', 'common', 'templates'),
 	files,
 	compiledFiles = [],
-	args = {};
+	args = {
+		type: process.argv[2],
+		name: process.argv[3]
+	};
 
 process.argv.slice(2).forEach(function (arg) {
 	arg = arg.split('=');
@@ -150,7 +153,7 @@ if (!creators[args.type]) {
 	return 1;
 }
 
-if (!args.itemName) {
+if (!args.name) {
 	sys.puts('Please, enter name of `' + args.type + '`!');
 	return 1;
 }
@@ -165,5 +168,5 @@ files.forEach(function (filename) {
 	}
 });
 
-creators[args.type](args.itemName);
+creators[args.type](args.name);
 return 0;
