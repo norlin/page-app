@@ -1,0 +1,14 @@
+{
+	"name": "index",
+	"title": "Example app",
+	"version": "0.0.1",
+	"prefix": "",
+	"config": {
+		"production": {
+			"host": "/index/"
+		},
+		"development": {
+			"host": ""
+		}
+	}
+}

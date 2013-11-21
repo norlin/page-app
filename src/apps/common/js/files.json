@@ -1,0 +1,7 @@
+[
+	"vendor",
+	"common.js",
+	"core.js",
+	"sandbox.js",
+	"module.js"
+]

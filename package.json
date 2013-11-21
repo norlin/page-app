@@ -1,0 +1,46 @@
+{
+  "name": "page-app",
+  "version": "0.0.2",
+  "description": "Builder for rich single-page js apps (frontend)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/norlin/page-app.git"
+  },
+  "dependencies": {
+    "dustjs-linkedin": "2",
+    "dustjs-helpers": "1",
+    "fs.extra": "*",
+    "jshint": "*",
+    "autoprefixer": "*",
+    "extend": "*"
+  },
+  "devDependencies": {
+    "mocha-phantomjs": "*",
+    "chai": "1.7.x"
+  },
+  "author": {
+    "name": "Alexey Makarov",
+    "email": "alexey@norlin.ru"
+  },
+  "keywords": [
+    "page-app",
+    "framework",
+    "frontend",
+    "web",
+    "rest",
+    "restful",
+    "single",
+    "page",
+    "app"
+  ],
+  "bin": {
+    "page-app": "./bin/create.js"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "3435175c828307a6cb68164f7aacc3f396468131"
+}

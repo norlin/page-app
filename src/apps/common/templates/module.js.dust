@@ -1,0 +1,26 @@
+/* global app */
+(function ($, app) {
+	var {ModuleName} = app.createModule('{moduleName}', function (sandbox) {
+		var module = this;
+
+		//module usage
+	});
+
+	/*
+	{ModuleName}.prototype.render = function (ready) {
+		var module = this,
+			moduleSource = this.data.dom; //`<div data-type="module">` node from app template
+
+		this.processDOM();
+
+		//method for custom html renderer
+
+		dust.render(this.name + '/' + this.template, this.data, function (err, moduleHtml) {
+			//you should create some module node
+			module.node = $(moduleHtml);
+			ready();
+		});
+	};
+	*/
+} (jQuery, app));
+/* global -app */

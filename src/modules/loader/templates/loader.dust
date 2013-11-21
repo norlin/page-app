@@ -1,0 +1,9 @@
+<div class="b-loader_curtain{?element} b-loader_curtain__element{/element} g-transition-opacity g-fade g-hidden"></div>
+<div class="b-loader_block{?element} b-loader_block__element{/element} g-transition-opacity g-fade g-hidden">
+	<i class="b-loader"></i>
+	{?text}
+		{text}
+	{:else}
+		Loading...
+	{/text}
+</div>

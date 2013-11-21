@@ -1,0 +1,18 @@
+/* global app,chai,describe,before,it,$ */
+var assert = chai.assert;
+
+describe('Module existance', function() {
+	var module;
+
+	before(function () {
+		module = $('.b-{moduleName}');
+	});
+
+	/*
+	//not nessesarly, `cause module could connect in runtime
+	it('должен быть в dom', function(){
+		assert.notEqual(module.length, '0', 'Must be in DOM');
+	});
+	*/
+});
+/* global -app,chai,describe,before,it,$ */

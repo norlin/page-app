@@ -1,0 +1,9 @@
+<nav class="b-nav">
+	<ul class="b-nav_list">
+	{#module.options.json}
+		<li class="b-nav_item{?active} b-nav_item__active{/active}">
+			<a class="b-nav_link" href="{url}" data-type="route">{title}</a>
+		</li>
+	{/module.options.json}
+	</ul>
+</nav>
