@@ -69,8 +69,7 @@ module.exports = function makeBuilder (settings) {
 		File = buildApp.File;
 
 		//чистим www-директорию
-		fs.removeSync(settings.www);
-		fs.mkdirp(settings.www);
+		fs.removeSync(path.resolve(settings.www, (settings.config.prefix || '') + 'common'));
 
 		//обрабатываем общие файлы
 		var common = (new Folder(path.join('apps','common'), {
