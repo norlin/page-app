@@ -5,7 +5,7 @@
 		"production": {
 			"www": "../www",
 			"common": "common",
-			"host": "/common/"
+			"host": "/page-app/common/"
 		},
 		"development": {
 			"www": "..",

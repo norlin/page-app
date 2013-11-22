@@ -1,12 +1,12 @@
 {
-	"name": "index",
+	"name": "page-app",
 	"title": "Example app",
 	"version": "0.0.1",
 	"prefix": "",
 	"index": true,
 	"config": {
 		"production": {
-			"host": "/index/"
+			"host": "/page-app/"
 		},
 		"development": {
 			"host": ""
