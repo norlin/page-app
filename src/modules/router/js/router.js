@@ -129,28 +129,9 @@
 				replace = true;
 			}
 
-			/*
-			inputsData = window.history.state;
-
-			if (inputsData._params) {
-				inputsData._inputsData = saveInputs(module.node);
-			} else {
-				inputsData = {
-					'_params': replace ? data : inputsData,
-					'_inputsData': saveInputs(module.node)
-				};
-			}
-			*/
-
 			if (replace) {
-				/*
-					app.replaceState(inputsData, null, path);
-				*/
 				app.replaceState(data, null, path);
 			} else {
-				/*
-					app.replaceState(inputsData, null, (window.history.location || window.location).pathname);
-				*/
 				app.pushState(data, null, path);
 			}
 
@@ -223,7 +204,7 @@
 				};
 			}
 
-			dust.render(tmpl, params, function (err, html) {
+			sandbox.render(tmpl, params, function (err, html) {
 				if (err) {
 					throw err;
 				}
@@ -241,71 +222,6 @@
 
 		new Router(this.options.index);
 	});
-
-	/*
-	function saveInputs (container) {
-		var $node = $(container),
-			inputData = {},
-			getVal = {
-				'default': function ($input) {
-					return $input.val();
-				},
-				'checkbox': function ($input) {
-					return $input.is(':checked');
-				}
-			};
-
-		$node.find('input,select,textarea').each(function () {
-			var $input = $(this),
-				id = $input.attr('id'),
-				noProcessing = [
-					'submit',
-					'reset',
-					'button'
-				],
-				type = $input.attr('type'),
-				val;
-
-			if ((!id) || noProcessing.indexOf(type) > -1) {
-				return;
-			}
-
-			if (!getVal[type]) {
-				type = 'default';
-			}
-
-			val = getVal[type]($input);
-
-			inputData[id] = val;
-		});
-
-		return inputData;
-	}
-
-	function restoreInputs (container, data) {
-		var $node = $(container),
-			id,
-			$input;
-
-		for (id in data) {
-			if (data.hasOwnProperty(id)) {
-				$input = $node.find('#' + id);
-
-				if ($input.is('[type=checkbox]')) {
-					if (data[id]) {
-						$input.attr('checked', 'checked').trigger('change');
-					} else {
-						$input.removeAttr('checked');
-					}
-				} else {
-					$input.val(data[id]);
-				}
-
-				$input.trigger('change');
-			}
-		}
-	}
-	*/
 
 	function parseGetParams (getString) {
 		var params,

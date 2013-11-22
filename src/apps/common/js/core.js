@@ -174,10 +174,11 @@
 
 		function start() {
 			var page,
-				pageRx = /^page\/(.*)$/;
+				pageRx = /^page\/(.*)$/,
+				templates = app.getTemplates();
 
-			for (page in dust.cache) {
-				if (dust.cache.hasOwnProperty(page) && pageRx.test(page)) {
+			for (page in templates) {
+				if (templates.hasOwnProperty(page) && pageRx.test(page)) {
 					app.pages.push(page.replace(pageRx, '$1'));
 				}
 			}
@@ -188,7 +189,7 @@
 				app.trigger('hide.loader', 'start');
 			};
 
-			dust.render(app.name, data, function (err, html) {
+			app.render(app.name, data, function (err, html) {
 				app.node = $('<div></div>');
 				app.node.html(html);
 

@@ -30,7 +30,7 @@
 				module.options = module.data.dom.data('options');
 			}
 
-			this.render(function () {
+			this.render(sandbox, function () {
 				if (module.data.dom) {
 					module.data.dom.replaceWith(module.node);
 				}
@@ -76,11 +76,11 @@
 		};
 	};
 //
-	Module.prototype.render = function (callback) {
+	Module.prototype.render = function (sandbox, callback) {
 		var module = this;
 		this.processDOM();
 
-		dust.render(this.name + '/' + this.template, this.data, function (err, moduleHtml) {
+		sandbox.render(this.name + '/' + this.template, this.data, function (err, moduleHtml) {
 			if (err) {
 				throw err;
 			}

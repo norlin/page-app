@@ -19,7 +19,7 @@
 						return;
 					}
 
-					dust.render(module.name + '/' + module.template, extend(module.data, {
+					sandbox.render(module.name + '/' + module.template, extend(module.data, {
 						element: true
 					}), function (err, moduleHtml) {
 						blockLoaderHtml = moduleHtml;
