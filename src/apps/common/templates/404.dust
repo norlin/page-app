@@ -1,0 +1,7 @@
+<h2>Page not found!</h2>
+
+<div class="b-block">
+	Page not found!
+
+	You can <a href="javascript:back()">go back</a> or try to <a href="{base}" data-type="route">open&nbsp;main&nbsp;page</a>.
+</div>

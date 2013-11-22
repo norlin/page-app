@@ -1,0 +1,16 @@
+{
+	"version": "0.0.1",
+	"target": "default",
+	"config": {
+		"production": {
+			"www": "../www",
+			"common": "common",
+			"host": "/common/"
+		},
+		"development": {
+			"www": "..",
+			"common": "common",
+			"host": "../common/"
+		}
+	}
+}

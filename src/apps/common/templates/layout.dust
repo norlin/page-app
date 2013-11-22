@@ -1,0 +1,87 @@
+{<scripts}
+	{! scripts output !}
+
+	{?layout.development}
+		{~n}<script type="text/javascript">
+			var IsDev = true;
+		</script>
+	{/layout.development}
+
+	{#layout.scripts}
+		{~n}<script src="{.}" type="text/javascript"></script>
+	{/layout.scripts}
+
+	{?layout.scriptsIE}
+	{~n}<!-- [if lt IE 9]>
+		{#layout.scriptsIE}
+			{~n}<script src="{.}" type="text/javascript"></script>
+		{/layout.scriptsIE}
+	{~n}<![endif]-->
+	{/layout.scriptsIE}
+{/scripts}
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8" />{~n}
+	<title>{?title}{title}{:else}Медтера{/title}</title>
+
+	{#layout.styles}
+		{~n}<link rel="stylesheet" href="{.}" />
+	{/layout.styles}
+
+	{?layout.stylesIE}
+	{~n}<!--[if lt IE 9]>
+		{#layout.stylesIE}
+			{~n}<link rel="stylesheet" href="{.}" />
+		{/layout.stylesIE}
+	{~n}<![endif]-->
+	{/layout.stylesIE}
+
+	{^layout.scriptsTest}
+		{!
+			In common case,
+			scripts rendered here
+		!}
+		{+scripts/}
+	{/layout.scriptsTest}
+</head>
+<body>
+
+	{?layout.scriptsTest}
+		{!
+			If we building for tests,
+			connect Mocha...
+		!}
+		<div id="mocha"></div>
+		{#layout.scriptsTest}
+			{! ...connect tests... !}
+			{~n}<script src="{.}" type="text/javascript"></script>
+		{/layout.scriptsTest}
+		<script type="text/javascript">
+			mocha.ui('bdd');
+			mocha.reporter('html');
+		</script>
+		{#layout.scriptsTestCases}
+			{! ...more tests... !}
+			{~n}<script src="{.}" type="text/javascript"></script>
+		{/layout.scriptsTestCases}
+	{/layout.scriptsTest}
+
+<div id="layout" class="g-layout">{html}</div>
+<div class="b-loader_curtain g-transition-opacity"></div>
+<div class="b-loader_block g-transition-opacity">
+	<i class="b-loader"></i>
+	Loading...
+</div>
+
+	{?layout.scriptsTest}
+		{! ...and render scripts here !}
+		{+scripts/}
+
+		{~n}<script type="text/javascript">
+			if (window.mochaPhantomJS) { mochaPhantomJS.run(); }
+			else { mocha.run(); }
+		</script>
+	{/layout.scriptsTest}
+</body>
+</html>

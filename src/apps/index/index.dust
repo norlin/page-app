@@ -1,0 +1,10 @@
+<h1>Hello, world!</h1>
+
+{@my module="nav"}
+	{:json}
+		{links|js|s}
+{/my}
+
+{@my module="router" index="index"/}
+
+{@my module="loader"/}

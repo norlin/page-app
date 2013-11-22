@@ -1,0 +1,1 @@
+<div class="b-{moduleName}">{~lb}module.content|s{~rb}</div>
