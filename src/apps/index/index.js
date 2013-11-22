@@ -6,8 +6,8 @@
 
 	app.start('index', {
 		links: [
-			{"title":"First","url":"/index/index"},
-			{"title":"Second","url":"/index/second"}
+			{"title":"First","url":"/page-app/index/index"},
+			{"title":"Second","url":"/page-app/index/second"}
 		]
 	}, '#layout');
 }(window, jQuery, app));

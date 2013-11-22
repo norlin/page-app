@@ -6,12 +6,12 @@
 
 	app.start('index', {
 		links: [
-			{"title":"First","url":"/index/index"},
-			{"title":"Second","url":"/index/second"}
+			{"title":"First","url":"/page-app/index/index"},
+			{"title":"Second","url":"/page-app/index/second"}
 		]
 	}, '#layout');
 }(window, jQuery, app));
-/* global -app */(function(){dust.register("pages/index",body_0);function body_0(chk,ctx){return chk.write("<div>My first page</div>");}return body_0;})();/* global app */
+/* global -app */(function(){dust.register("pages/index",body_0);function body_0(chk,ctx){return chk.write("<div>My first page</div>");}return body_0;})();(function(){dust.register("pages/second",body_0);function body_0(chk,ctx){return chk.write("<div>My second page</div>");}return body_0;})();/* global app */
 (function ($, app) {
 	var classes = {
 			item: 'b-nav_item',
