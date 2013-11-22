@@ -1,0 +1,37 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.g-hidden {
+  display: none !important;
+}
+
+.g-layout {
+  position: relative;
+  display: block;
+  height: auto !important;
+  height: 100%;
+  min-height: 100%;
+  min-width: 1000px;
+  max-width: 1240px;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+a {
+  color: #8cb8f6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
