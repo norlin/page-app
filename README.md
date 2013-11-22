@@ -26,5 +26,8 @@ Yep, just like that.
 
 #### Use different config file
     page-app build config=config.yar.json
+    
+## Building project from node.js code
+Look for [wiki page](https://github.com/norlin/page-app/wiki/Building-project-from-node.js-code)
 
 ## Have fun!
