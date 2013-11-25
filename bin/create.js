@@ -28,13 +28,14 @@ function processName (name) {
 	name = name.replace(/[^A-Za-z0-9_\s\-]/gi, '-');
 	name = name.split('-');
 
-	name.map(function (namePart) {
+	lower = name.join('-');
+	lower = lower.charAt(0).toLowerCase() + lower.slice(1);
+
+	name = name.map(function (namePart) {
 		return namePart.charAt(0).toUpperCase() + namePart.slice(1);
 	});
 
-	name = name.join('');
-	upper = name;
-	lower = name.charAt(0).toLowerCase() + name.slice(1);
+	upper = name.join('');
 
 	return {
 		upper: upper,
