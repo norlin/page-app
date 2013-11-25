@@ -20,7 +20,16 @@
 		this.modules = {};
 		this.pages = [];
 
-		this.set = function (newData) {
+		this.set = function (param, value) {
+			var newData;
+
+			if (typeof (param) === 'object') {
+				newData = param;
+			} else {
+				newData = {};
+				newData[param] = value;
+			}
+
 			data = extend(data, newData);
 		};
 
@@ -171,6 +180,7 @@
 		var app = this;
 
 		this.name = name;
+		this.set('name', this.name);
 
 		function start() {
 			var page,

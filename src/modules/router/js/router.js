@@ -78,11 +78,12 @@
 			this.links.off('click.router').on('click.router', function (e) {
 				var $this = $(this),
 					href = $this.attr('href'),
-					params;
+					params,
+					appName = app.get('name');
 
 				e.preventDefault();
 
-				href = href.split(router.base)[1] || href;
+				href = href.split(router.base)[1] || href.split('/' + appName + '/')[1] || href;
 				params = href.match(/(\?.*)$/);
 
 				if (params) {
