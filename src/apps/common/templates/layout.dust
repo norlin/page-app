@@ -23,7 +23,7 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8" />{~n}
-	<title>{?title}{title}{:else}Медтера{/title}</title>
+	<title>{?title}{title}{:else}Hello, world!{/title}</title>
 
 	{#layout.styles}
 		{~n}<link rel="stylesheet" href="{.}" />
