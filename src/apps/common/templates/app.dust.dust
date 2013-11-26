@@ -1,8 +1,8 @@
-{@my module="nav"}
-	{:json}
-		{links|js|s}
-{/my}
+{~lb}@my module="nav"{~rb}
+	{~lb}:json{~rb}
+		{~lb}links|js|s{~rb}
+{~lb}/my{~rb}
 
-{@my module="router" index="index"/}
+{~lb}@my module="router" index="index"/{~rb}
 
-{@my module="loader"/}
+{~lb}@my module="loader"/{~rb}
