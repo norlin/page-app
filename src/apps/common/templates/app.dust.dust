@@ -1,0 +1,8 @@
+{@my module="nav"}
+	{:json}
+		{links|js|s}
+{/my}
+
+{@my module="router" index="index"/}
+
+{@my module="loader"/}

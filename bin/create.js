@@ -131,7 +131,69 @@ var creators = {
 		}
 	},
 	'app': function (name) {
-		sys.puts('Not implemented yet!');
+		var appName = processName(name).lower,
+			data = {
+				AppName: appName
+			},
+			appPath = path.resolve(basePath, 'apps', appName),
+			pagesPath = path.resolve(appPath, 'pages'),
+			js,
+			json,
+			tmpl,
+			page;
+
+		if (fs.existsSync(appPath)) {
+			sys.puts('App `' + appName + '` already exists!');
+			return;
+		}
+
+		dust.render('app.js', data, function (err, content) {
+			if (err) {
+				throw err;
+			}
+
+			js = content;
+			complete();
+		});
+
+		dust.render('app.dust', data, function (err, content) {
+			if (err) {
+				throw err;
+			}
+
+			tmpl = content;
+			complete();
+		});
+
+		dust.render('app-page.dust', data, function (err, content) {
+			if (err) {
+				throw err;
+			}
+
+			page = content;
+			complete();
+		});
+
+		dust.render('app.json', data, function (err, content) {
+			if (err) {
+				throw err;
+			}
+
+			json = content;
+			complete();
+		});
+
+		function complete () {
+			if (js && json && dust && page) {
+				fs.mkdirpSync(appPath);
+				fs.mkdirSync(pagesPath);
+
+				fs.writeFileSync(path.resolve(appPath, appName + '.js'), js);
+				fs.writeFileSync(path.resolve(appPath, appName + '.json'), json);
+				fs.writeFileSync(path.resolve(appPath, appName + '.dust'), tmpl);
+				fs.writeFileSync(path.resolve(pagesPath, 'index.dust'), page);
+			}
+		}
 	}
 };
 

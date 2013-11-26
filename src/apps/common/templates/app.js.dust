@@ -1,0 +1,13 @@
+/* global app */
+(function (window, $, app) {
+	app.set({
+		animation: 400
+	});
+
+	app.start('{AppName}', {
+		links: [
+			{"title":"First","url":"/{AppName}/index"},
+		]
+	}, '#layout');
+}(window, jQuery, app));
+/* global -app */
