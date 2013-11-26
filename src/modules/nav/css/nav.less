@@ -1,0 +1,53 @@
+@import "styles.less";
+
+@navHover: #e0e5ed;
+
+.b-nav {
+	position: relative;
+
+	padding: 0 30px;
+
+	background: @navColor;
+
+	&_list {
+		margin: 0;
+		padding: 0;
+	}
+
+	&_item {
+		position: relative;
+
+		display: inline-block;
+		height: 45px;
+		padding: 0 15px;
+
+		&:hover {
+			background: #edf0f5;
+		}
+
+		&__active {
+			font-weight: bold;
+
+			background: @navHover;
+
+			&:hover {
+				background: @navHover;
+			}
+		}
+	}
+
+	&_link {
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+
+		padding: 0;
+
+		color: inherit;
+
+		&:hover {
+			text-decoration: none;
+		}
+	}
+}
+

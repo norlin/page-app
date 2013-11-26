@@ -1,6 +1,6 @@
 {
   "name": "page-app",
-  "version": "0.0.12-1",
+  "version": "0.0.13",
   "description": "Builder for rich single-page js apps (frontend)",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "fs.extra": "*",
     "jshint": "*",
     "autoprefixer": "*",
+    "less": "*",
     "extend": "*"
   },
   "devDependencies": {
