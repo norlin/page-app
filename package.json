@@ -1,6 +1,6 @@
 {
   "name": "page-app",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Builder for rich single-page js apps (frontend)",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,8 @@
     "jshint": "*",
     "autoprefixer": "*",
     "less": "*",
+    "csso": "*",
+    "uglify-js": "*",
     "extend": "*"
   },
   "devDependencies": {

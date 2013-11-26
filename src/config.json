@@ -3,11 +3,13 @@
 	"target": "default",
 	"config": {
 		"production": {
+			"minify": true,
 			"www": "www",
 			"common": "common",
 			"host": "/common/"
 		},
 		"development": {
+			"minify": false,
 			"www": "www",
 			"common": "common",
 			"host": "../common/"
