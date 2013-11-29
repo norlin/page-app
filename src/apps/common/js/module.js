@@ -1,6 +1,6 @@
 (function (window, $) {
 	/**
-	 * Module constructor
+	 * Конструктор модуля
 	 */
 	var Module = function () {
 		this.init();
@@ -30,7 +30,7 @@
 				module.options = module.data.dom.data('options');
 			}
 
-			this.render(sandbox, function () {
+			this.render(function () {
 				if (module.data.dom) {
 					module.data.dom.replaceWith(module.node);
 				}
@@ -61,9 +61,10 @@
 		return ready;
 	};
 
-	Module.prototype.processDOM = function () {
+	Module.prototype.processDOM = function (callback) {
 		var module = this,
-			moduleSource;
+			moduleSource,
+			ajaxErr;
 
 		if (module.data.dom) {
 			moduleSource = module.data.dom.html();
@@ -74,20 +75,43 @@
 			options: this.options,
 			content: moduleSource
 		};
+
+		if (this.options.ajax) {
+			return this.sandbox.ajax({
+				url: this.options.ajax,
+				data: this.options.json || {},
+				success: function (data) {
+					module.options.json = data;
+				},
+				error: function (err) {
+					ajaxErr = err;
+				},
+				complete: function () {
+					if (typeof(callback) === 'function') {
+						callback.call(module, ajaxErr);
+					}
+				}
+			});
+		}
+
+		if (typeof(callback) === 'function') {
+			callback.apply(module);
+		}
 	};
 //
-	Module.prototype.render = function (sandbox, callback) {
+	Module.prototype.render = function (callback) {
 		var module = this;
-		this.processDOM();
 
-		sandbox.render(this.name + '/' + this.template, this.data, function (err, moduleHtml) {
-			if (err) {
-				throw err;
-			}
+		this.processDOM(function () {
+			dust.render(this.name + '/' + this.template, this.data, function (err, moduleHtml) {
+				if (err) {
+					throw err;
+				}
 
-			module.node = $(moduleHtml);
+				module.node = $(moduleHtml);
 
-			callback();
+				callback();
+			});
 		});
 	};
 

@@ -214,6 +214,8 @@
 					throw new Error('Empty page! page: `' + page + '`');
 				}
 
+				sandbox.notify('destroy');
+
 				app.renderModules($(html), module.node, sandbox, function () {
 					router.update(inputsData);
 					sandbox.emit('page', {page: page});
@@ -242,6 +244,14 @@
 				getString = getString.split('&');
 				getString.forEach(function (param) {
 					param = param.split('=');
+
+					if (param[0]) {
+						param[0] = decodeURIComponent(param[0]);
+					}
+
+					if (param[1]) {
+						param[1] = decodeURIComponent(param[1]);
+					}
 
 					if (data[param[0]]) {
 						data[param[0]] = [data[param[0]]];

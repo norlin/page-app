@@ -7,11 +7,25 @@
 	// выполняет сначала первую функцию-аргумент, потом вторую
 	// с сохранением контекста и переданными аргументами
 	Sandbox.prototype.init = decorate(Sandbox.prototype.init, function () {
+		var sandbox = this;
+
 		// дополняем инициализацию Sandbox
 		// нужными полями
 		this.triggers = {};
 
 		this.bufferedEvents = [];
+
+		// сразу же слушаем destroy
+		this.bind('destroy', function (e) {
+			// прерываем цепочку выполнения эвента
+			e.stop();
+
+			// уничтожаем потомков
+			sandbox.notify('destroy');
+
+			// уничтожаем себя
+			sandbox.destroy();
+		});
 	});
 
 	Sandbox.prototype.ready = decorate(Sandbox.prototype.ready, function () {
@@ -116,7 +130,7 @@
 	Sandbox.prototype.trigger = function (event, ns, data) {
 		var sandbox = this;
 
-		if (!event.module || (event.module === sandbox.name)) {
+		if (event.propagate && (!event.module || (event.module === sandbox.name))) {
 			event = checkEvent(event, ns, data);
 
 			if (this.working || event.type === 'append') {
@@ -164,12 +178,13 @@
 	Sandbox.prototype.bubble = function (event, ns, data) {
 		event = checkEvent(event, ns, data);
 
-		// выполняем собственный обработчик
-		this.trigger(event);
+		// (не) выполняем собственный обработчик
+		// this.trigger(event);
 
 		// дёргаем бабблинг у родителя
 		// если он есть
 		if (this.parent) {
+			this.parent.trigger(event);
 			this.parent.bubble(event, ns, data);
 		}
 	};
@@ -181,14 +196,19 @@
 	 * @param  {object} data  данные (опционально)
 	 */
 	Sandbox.prototype.notify = function (event, ns, data) {
-		event = checkEvent(event, ns, data);
+		var children = this.children.slice();
 
-		// выполняем собственный обработчик
-		this.trigger(event);
+		// (не) выполняем собственный обработчик
+		// this.trigger(event);
 
 		// дёргаем уведомление у детей
-		this.children.forEach(function (child) {
-			child.notify(event, ns, data);
+		children.forEach(function (child) {
+			// эвент создаётся отдельно для каждого потомка,
+			// чтобы правильно работал .stop()
+			var childEvent = checkEvent(event, ns, data);
+
+			child.trigger(childEvent);
+			child.notify(childEvent, ns, data);
 		});
 	};
 
@@ -215,11 +235,21 @@
 	var Event = function (type, ns, params) {
 		this.type = type;
 		this.ns = ns || undefined;
-		this.data = extend({}, params.data);
+		this.propagate = true;
+
+		if (typeof(params.data) === 'object' && !(params.data instanceof Array)) {
+			this.data = extend({}, params.data);
+		} else {
+			this.data = params.data;
+		}
 
 		if (params.module) {
 			this.module = params.module;
 		}
+	};
+
+	Event.prototype.stop = function () {
+		this.propagate = false;
 	};
 }(window));
 /* global -decorate */

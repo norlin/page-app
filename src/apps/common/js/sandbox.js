@@ -23,6 +23,33 @@
 		this.working = true;
 	};
 
+	/**
+	 * уничтожение всех ссылок на себя
+	 */
+	Sandbox.prototype.destroy = function () {
+		var sandbox = this;
+
+		this.working = false;
+
+		function selfDestroy (holder) {
+			var selfIndex;
+
+			selfIndex = holder.indexOf(sandbox);
+			if (selfIndex > -1) {
+				holder.splice(selfIndex, 1);
+			}
+		}
+
+		// убираем себя из общего списка песочниц
+		selfDestroy(this.app.sandboxes);
+
+		// если есть модуль-родитель
+		// убираем себя из списка его потомков
+		if (this.parent) {
+			selfDestroy(this.parent.children);
+		}
+	};
+
 	Sandbox.prototype.createId = function () {
 		var ts;
 
