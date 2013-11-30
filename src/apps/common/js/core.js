@@ -133,7 +133,7 @@
 			loaders = [],
 			modules;
 
-		modules = container.find('[data-type=module]').addBack('[data-type=module]').not('[data-type=module] [data-type=module]');
+		modules = container.find('[data-module]').addBack('[data-module]').not('[data-module] [data-module]');
 		modules.each(function () {
 			var loader = $.Deferred();
 			loaders.push(loader);
@@ -161,7 +161,7 @@
 	App.prototype.initModule = function (moduleNode, callback, parentModule) {
 		var app = this,
 			$this = $(moduleNode),
-			name = $this.data('name');
+			name = $this.data('module');
 
 		if (name) {
 			app.create(name, {dom: $this}, function (module, sandbox) {

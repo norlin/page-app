@@ -9,7 +9,7 @@
 	/*
 	{ModuleName}.prototype.render = function (ready) {
 		var module = this,
-			moduleSource = this.data.dom; //`<div data-type="module">` node from app template
+			moduleSource = this.data.dom; //`<div data-module="...">` node from app template
 
 		this.processDOM();
 

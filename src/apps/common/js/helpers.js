@@ -49,7 +49,7 @@
 
             opt = "data-options='" + JSON.stringify(moduleParams) + "'";
 
-            return '<' + moduleParams.node + ' data-type="module" data-name="' + moduleParams.module + '" ' + opt + '>' + content + '</' + moduleParams.node + '>';
+            return '<' + moduleParams.node + ' data-module="' + moduleParams.module + '" ' + opt + '>' + content + '</' + moduleParams.node + '>';
         }
 
         ctx = ctx.push(params);
