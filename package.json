@@ -1,6 +1,6 @@
 {
   "name": "page-app",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Builder for rich single-page js apps (frontend)",
   "main": "index.js",
   "scripts": {
