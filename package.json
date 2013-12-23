@@ -1,6 +1,6 @@
 {
   "name": "page-app",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Builder for rich single-page js apps (frontend)",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,7 @@
     "dustjs-helpers": "1",
     "fs.extra": "*",
     "jshint": "*",
-    "autoprefixer": "*",
+    "autoprefixer": "~1",
     "less": "*",
     "csso": "*",
     "uglify-js": "*",
