@@ -207,7 +207,7 @@ if (!args.type || args.type === 'base') {
 }
 
 if (args.type === 'build') {
-	require('../index.js')(args.config || 'config.json').build();
+	require('../index.js')(args.config || 'config.json', args).build();
 	return 0;
 }
 

@@ -1,9 +1,9 @@
-module.exports = function makeBuilder (settings) {
+module.exports = function makeBuilder (settings, args) {
 	if (!settings || typeof(settings) === 'string') {
 		settings = {
 			basePath: '.',
-			configPath: settings || process.argv[2] || 'config.json',
-			env: 'development',
+			configPath: settings || args.config || 'config.json',
+			env: args.env || 'development',
 			noLintResults: false
 		};
 	}
@@ -84,7 +84,7 @@ module.exports = function makeBuilder (settings) {
 		//ищем и обрабатываем все приложения
 		fs.readdirSync(path.resolve(settings.source, 'apps')).forEach(function (appName) {
 			var app;
-			if (appName !== 'common') {
+			if (appName !== 'common' && (!args.app || (args.app && args.app === appName))) {
 				app = new App(appName, common.files, settings.env);
 				errors = errors.concat(app.errors);
 
