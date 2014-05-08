@@ -4,6 +4,7 @@
 	"config": {
 		"production": {
 			"minify": true,
+			"autoprefixerOptions": "Firefox >= 4",
 			"www": "www",
 			"common": "common",
 			"host": "/common/"
