@@ -90,7 +90,7 @@ module.exports = function makeBuilder (settings, args) {
 		fs.readdirSync(path.resolve(settings.source, 'apps')).forEach(function (appName) {
 			var app;
 			if (appName !== 'common' && (!args.app || (args.app && args.app === appName))) {
-				app = new App(appName, common.files, !!args.app);
+				app = new App(appName, common.files, args.index === 'true');
 				errors = errors.concat(app.errors);
 
 				apps[app.name] = app.generated;
