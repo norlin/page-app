@@ -62,6 +62,11 @@ module.exports = function makeBuilder (settings, args) {
 
 		settings = parseConfig(target);
 
+		// если в командной строке задан параметр www, использовать его вместо прописанного в config.json
+		if (args.www) {
+			settings.www = args.www;
+		}
+
 		//инициализируем билдер
 		buildApp = app(settings);
 		App = buildApp.App;
@@ -85,7 +90,7 @@ module.exports = function makeBuilder (settings, args) {
 		fs.readdirSync(path.resolve(settings.source, 'apps')).forEach(function (appName) {
 			var app;
 			if (appName !== 'common' && (!args.app || (args.app && args.app === appName))) {
-				app = new App(appName, common.files, settings.env);
+				app = new App(appName, common.files, !!args.app);
 				errors = errors.concat(app.errors);
 
 				apps[app.name] = app.generated;
