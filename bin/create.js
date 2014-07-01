@@ -4,7 +4,7 @@ var sys = require('util'),
 	fs = require('fs.extra'),
 	path = require('path'),
 	basePath = '.',
-	File = require('../lib/file')({source:basePath}),
+	File = require('../lib/file')({source: basePath}),
 	dust = require('dustjs-linkedin'),
 	modulePath = path.resolve(module.filename, '../../src'),
 	templatesPath = path.resolve(modulePath, 'apps', 'common', 'templates'),
@@ -21,7 +21,7 @@ process.argv.slice(2).forEach(function (arg) {
 	args[arg[0]] = arg[1];
 });
 
-function processName (name) {
+function processName(name) {
 	var upper,
 		lower;
 
@@ -116,7 +116,7 @@ var creators = {
 			complete();
 		});
 
-		function complete () {
+		function complete() {
 			if (js && css && dust && test) {
 				fs.mkdirpSync(jsPath);
 				fs.mkdirSync(dustPath);
@@ -183,7 +183,7 @@ var creators = {
 			complete();
 		});
 
-		function complete () {
+		function complete() {
 			if (js && json && dust && page) {
 				fs.mkdirpSync(appPath);
 				fs.mkdirSync(pagesPath);
@@ -223,7 +223,9 @@ if (!args.name) {
 
 files = fs.readdirSync(templatesPath);
 
-dust.optimizers.format = function(ctx, node) { return node; };
+dust.optimizers.format = function (ctx, node) {
+	return node;
+};
 
 files.forEach(function (filename) {
 	if (filename.split('.dust').length >= 2) {
