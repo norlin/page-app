@@ -1,6 +1,6 @@
 {
   "name": "page-app",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "Builder for rich single-page js apps (frontend)",
   "main": "index.js",
   "scripts": {
@@ -15,19 +15,19 @@
     "email" : "alexey@norlin.ru"
   },
   "dependencies": {
-    "autoprefixer": "1.3.1",
-    "csso": "1.3.11",
+    "autoprefixer": "1.*",
+    "csso": "~1.3.11",
     "dustjs-helpers": "1.2.0",
     "dustjs-linkedin": "2.4.0",
-    "fs.extra": "1.2.1",
-    "jscs": "1.5.9",
-    "extend": "1.3.0",
-    "jshint": "2.5.5",
-    "less": "1.7.4",
-    "phantomjs": "1.9.7-15",
-    "uglify-js": "2.4.15"
+    "fs.extra": "~1.2.1",
+    "jscs": "*",
+    "extend": "~1.3.0",
+    "jshint": "~2.5.5",
+    "less": "~1.7.4",
+    "uglify-js": "~2.4.15"
   },
   "devDependencies": {
+    "phantomjs": "1.9.7-15",
     "mocha-phantomjs": "3.5.0",
     "chai": "1.7.2"
   },
